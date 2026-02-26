@@ -18,7 +18,6 @@
 (function() {
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
-  var screenfull = window.screenfull;
   var data = window.APP_DATA;
 
   // Grab elements from DOM.
@@ -27,8 +26,6 @@
   var sceneListElement = document.querySelector('#sceneList');
   var sceneElements = document.querySelectorAll('#sceneList .scene');
   var sceneListToggleElement = document.querySelector('#sceneListToggle');
-  var autorotateToggleElement = document.querySelector('#autorotateToggle');
-  var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -78,7 +75,13 @@
       { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
     var geometry = new Marzipano.CubeGeometry(data.levels);
 
-    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);
+    // Crear el view con límites de zoom
+    var limiter = Marzipano.RectilinearView.limit.traditional(
+      1040 * 10,
+      (120 * Math.PI) / 180, 
+      (130 * Math.PI) / 180
+    );
+    
     var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
     var scene = viewer.createScene({
@@ -106,36 +109,6 @@
       view: view
     };
   });
-
-  // Set up autorotate, if enabled.
-  var autorotate = Marzipano.autorotate({
-    yawSpeed: 0.03,
-    targetPitch: 0,
-    targetFov: Math.PI/2
-  });
-  if (data.settings.autorotateEnabled) {
-    autorotateToggleElement.classList.add('enabled');
-  }
-
-  // Set handler for autorotate toggle.
-  autorotateToggleElement.addEventListener('click', toggleAutorotate);
-
-  // Set up fullscreen mode, if supported.
-  if (screenfull.enabled && data.settings.fullscreenButton) {
-    document.body.classList.add('fullscreen-enabled');
-    fullscreenToggleElement.addEventListener('click', function() {
-      screenfull.toggle();
-    });
-    screenfull.on('change', function() {
-      if (screenfull.isFullscreen) {
-        fullscreenToggleElement.classList.add('enabled');
-      } else {
-        fullscreenToggleElement.classList.remove('enabled');
-      }
-    });
-  } else {
-    document.body.classList.add('fullscreen-disabled');
-  }
 
   // Set handler for scene list toggle.
   sceneListToggleElement.addEventListener('click', toggleSceneList);
@@ -183,10 +156,8 @@
   }
 
   function switchScene(scene) {
-    stopAutorotate();
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
-    startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
   }
@@ -219,29 +190,6 @@
   function toggleSceneList() {
     sceneListElement.classList.toggle('enabled');
     sceneListToggleElement.classList.toggle('enabled');
-  }
-
-  function startAutorotate() {
-    if (!autorotateToggleElement.classList.contains('enabled')) {
-      return;
-    }
-    viewer.startMovement(autorotate);
-    viewer.setIdleMovement(3000, autorotate);
-  }
-
-  function stopAutorotate() {
-    viewer.stopMovement();
-    viewer.setIdleMovement(Infinity);
-  }
-
-  function toggleAutorotate() {
-    if (autorotateToggleElement.classList.contains('enabled')) {
-      autorotateToggleElement.classList.remove('enabled');
-      stopAutorotate();
-    } else {
-      autorotateToggleElement.classList.add('enabled');
-      startAutorotate();
-    }
   }
 
   function createLinkHotspotElement(hotspot) {
