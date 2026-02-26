@@ -23,9 +23,6 @@
   // Grab elements from DOM.
   var panoElement = document.querySelector("#pano");
   var sceneNameElement = document.querySelector("#titleBar .sceneName");
-  var sceneListElement = document.querySelector("#sceneList");
-  var sceneElements = document.querySelectorAll("#sceneList .scene");
-  var sceneListToggleElement = document.querySelector("#sceneListToggle");
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -118,27 +115,6 @@
     };
   });
 
-  // Set handler for scene list toggle.
-  sceneListToggleElement.addEventListener("click", toggleSceneList);
-
-  // Start with the scene list open on desktop.
-  if (!document.body.classList.contains("mobile")) {
-    showSceneList();
-  }
-
-  // Set handler for scene switch.
-  scenes.forEach(function (scene) {
-    var el = document.querySelector(
-      '#sceneList .scene[data-id="' + scene.data.id + '"]',
-    );
-    el.addEventListener("click", function () {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains("mobile")) {
-        hideSceneList();
-      }
-    });
-  });
 
   // DOM elements for view controls.
   var viewUpElement = document.querySelector("#viewUp");
@@ -229,7 +205,6 @@
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
     updateSceneName(scene);
-    updateSceneList(scene);
 
     // Mostrar u ocultar el botón de volver
     if (scene.data.id === scenes[0].data.id) {
@@ -243,31 +218,6 @@
     sceneNameElement.innerHTML = sanitize(scene.data.name);
   }
 
-  function updateSceneList(scene) {
-    for (var i = 0; i < sceneElements.length; i++) {
-      var el = sceneElements[i];
-      if (el.getAttribute("data-id") === scene.data.id) {
-        el.classList.add("current");
-      } else {
-        el.classList.remove("current");
-      }
-    }
-  }
-
-  function showSceneList() {
-    sceneListElement.classList.add("enabled");
-    sceneListToggleElement.classList.add("enabled");
-  }
-
-  function hideSceneList() {
-    sceneListElement.classList.remove("enabled");
-    sceneListToggleElement.classList.remove("enabled");
-  }
-
-  function toggleSceneList() {
-    sceneListElement.classList.toggle("enabled");
-    sceneListToggleElement.classList.toggle("enabled");
-  }
 
   function createLinkHotspotElement(hotspot) {
     // Create wrapper element to hold icon and tooltip.
