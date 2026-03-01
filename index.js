@@ -108,13 +108,22 @@
         .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
 
+    // Create pin hotspots.
+    if (data.pinHotspots) {
+      data.pinHotspots.forEach(function (hotspot) {
+        var element = createPinHotspotElement(hotspot);
+        scene
+          .hotspotContainer()
+          .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      });
+    }
+
     return {
       data: data,
       scene: scene,
       view: view,
     };
   });
-
 
   // DOM elements for view controls.
   var viewUpElement = document.querySelector("#viewUp");
@@ -217,7 +226,6 @@
   function updateSceneName(scene) {
     sceneNameElement.innerHTML = sanitize(scene.data.name);
   }
-
 
   function createLinkHotspotElement(hotspot) {
     // Create wrapper element to hold icon and tooltip.
@@ -338,6 +346,30 @@
     return wrapper;
   }
 
+  function createPinHotspotElement(hotspot) {
+    var wrapper = document.createElement("div");
+    wrapper.classList.add("hotspot");
+    wrapper.classList.add("pin-hotspot");
+
+    var label = document.createElement("div");
+    label.classList.add("pin-label");
+    label.innerHTML = hotspot.title;
+    wrapper.appendChild(label);
+
+    var icon = document.createElement("img");
+    icon.src = hotspot.icon;
+    icon.classList.add("pin-icon");
+    wrapper.appendChild(icon);
+
+    if (hotspot.tag) {
+      label.classList.add(hotspot.tag);
+      icon.classList.add(hotspot.tag);
+    }
+
+    stopTouchAndScrollEventPropagation(wrapper);
+    return wrapper;
+  }
+
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
     var eventList = [
@@ -375,4 +407,35 @@
 
   // Display the initial scene.
   switchScene(scenes[0]);
+
+ /*  var addedPins = [];
+  panoElement.addEventListener("click", function (event) {
+    var rect = panoElement.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+
+    var activeScene = scenes.find(function (s) {
+      return viewer.scene() === s.scene;
+    });
+    if (!activeScene) return;
+
+    var coords = activeScene.view.screenToCoordinates({ x: x, y: y });
+    console.log({ yaw: coords.yaw, pitch: coords.pitch });
+
+    // Muestra un pin temporal en el punto clickeado
+    addedPins.forEach(function (h) {
+      h.destroy();
+    });
+    addedPins = [];
+
+    var pin = createPinHotspotElement({
+      title: "Nuevo Pin",
+      icon: "img/hotspots/pin-mediano.svg",
+    });
+    var h = activeScene.scene.hotspotContainer().createHotspot(pin, {
+      yaw: coords.yaw,
+      pitch: coords.pitch,
+    });
+    addedPins.push(h);
+  }); */
 })();
