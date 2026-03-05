@@ -7,14 +7,11 @@
 <style> @-ms-viewport { width: device-width; } </style>
 <link rel="stylesheet" href="vendor/reset.min.css">
 <link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="multiple-scenes">
 
 <div id="pano"></div>
-
-<div id="titleBar">
-  <h1 class="sceneName"></h1>
-</div>
 
 <a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
   <img class="icon" src="img/up.png">
@@ -35,9 +32,45 @@
   <img class="icon" src="img/minus.png">
 </a>
 
-<a href="javascript:void(0)" id="backButton" style="display:none;">
-  ← Volver
+<a href="javascript:void(0)" id="backButton"">
+  <i class="fas fa-arrow-left"></i>
 </a>
+
+<div id="infoBar"">
+  <div id="infoCard">
+
+    <h2 id="titleBar"></h2>
+    <p><span class="status available"></span> Disponible</p>
+    <hr>
+
+    <div class="infoGrid">
+      
+      <div class="infoItem">
+        <div class="infoValue">$ Consultar</div>
+        <div class="infoLabel">Valor desde</div>
+      </div>
+
+      <div class="infoItem">
+        <div class="infoValue">5.000 m²</div>
+        <div class="infoLabel">Superficie</div>
+      </div>
+
+      <div class="infoItem">
+        <div class="infoValue">44 m</div>
+        <div class="infoLabel">Frente</div>
+      </div>
+
+      <div class="infoItem">
+        <div class="infoValue">Rol propio</div>
+        <div class="infoLabel">Tipo</div>
+      </div>
+
+    </div>
+
+    <button class="ctaButton">Reservar</button>
+
+  </div>
+</div>
 
 <script src="vendor/screenfull.min.js" ></script>
 <script src="vendor/bowser.min.js" ></script>

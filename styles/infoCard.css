@@ -1,0 +1,104 @@
+#infoBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  transform: translateY(100%);
+  opacity: 0;
+transition: transform 0.65s cubic-bezier(.22,.61,.36,1), opacity 0.25s;}
+
+#infoBar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#infoCard {
+  background: white;
+  border-radius: 20px 20px 0 0;
+    padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+#infoCard h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+#infoCard p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+#infoCard hr {
+  border: none;
+  border-top: 1px solid #e7e6e6;
+  margin: 15px -20px;
+}
+
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status.available {
+  background-color: #049727;
+}
+
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoValue {
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+}
+
+.infoLabel {
+  font-size: 13px;
+  color: #777;
+}
+
+
+.infoDescription {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 18px;
+}
+
+.ctaButton {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #049727;
+  color: white;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif; 
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ctaButton:hover {
+  background: #037a1e;
+}

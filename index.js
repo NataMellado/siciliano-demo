@@ -22,7 +22,8 @@
 
   // Grab elements from DOM.
   var panoElement = document.querySelector("#pano");
-  var sceneNameElement = document.querySelector("#titleBar .sceneName");
+  var sceneNameElement = document.querySelector("#titleBar");
+  var infoBar = document.querySelector("#infoBar");
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -211,20 +212,34 @@
   });
 
   function switchScene(scene) {
+    var sceneIndex = scenes.indexOf(scene);
+
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
-    updateSceneName(scene);
 
-    // Mostrar u ocultar el botón de volver
-    if (scene.data.id === scenes[0].data.id) {
-      backButton.style.display = "none";
+    if (sceneIndex === 0) {
+      // ocultar primero
+      infoBar.classList.remove("visible");
+
+      setTimeout(function () {
+        updateSceneName(scene);
+      }, 350); 
     } else {
-      backButton.style.display = "flex";
+      updateSceneName(scene);
+      infoBar.classList.add("visible");
+    }
+
+    if (sceneIndex === 0) {
+      backButton.classList.remove("visible");
+    } else {
+      backButton.classList.add("visible");
     }
   }
 
   function updateSceneName(scene) {
-    sceneNameElement.innerHTML = sanitize(scene.data.name);
+    if (sceneNameElement) {
+      sceneNameElement.innerHTML = sanitize(scene.data.name);
+    }
   }
 
   function createLinkHotspotElement(hotspot) {
@@ -408,7 +423,7 @@
   // Display the initial scene.
   switchScene(scenes[0]);
 
- /*  var addedPins = [];
+  /*  var addedPins = [];
   panoElement.addEventListener("click", function (event) {
     var rect = panoElement.getBoundingClientRect();
     var x = event.clientX - rect.left;

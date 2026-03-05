@@ -121,7 +121,7 @@ var APP_DATA = {
 
     {
       id: "1-2d",
-      name: "2D",
+      name: "Lote 2D",
       levels: [
         {
           tileSize: 256,
@@ -156,7 +156,7 @@ var APP_DATA = {
     },
     {
       id: "2-4c",
-      name: "4C",
+      name: "Lote 4C",
       levels: [
         {
           tileSize: 256,
@@ -191,7 +191,7 @@ var APP_DATA = {
     },
     {
       id: "3-7a",
-      name: "7A",
+      name: "Lote 7A",
       levels: [
         {
           tileSize: 256,
@@ -226,7 +226,7 @@ var APP_DATA = {
     },
     {
       id: "4-7b",
-      name: "7B",
+      name: "Lote 7B",
       levels: [
         {
           tileSize: 256,
@@ -261,7 +261,7 @@ var APP_DATA = {
     },
     {
       id: "5-7c",
-      name: "7C",
+      name: "Lote 7C",
       levels: [
         {
           tileSize: 256,
@@ -296,7 +296,7 @@ var APP_DATA = {
     },
     {
       id: "6-7d",
-      name: "7D",
+      name: "Lote 7D",
       levels: [
         {
           tileSize: 256,
@@ -331,7 +331,7 @@ var APP_DATA = {
     },
     {
       id: "7-10d",
-      name: "10D",
+      name: "Lote 10D",
       levels: [
         {
           tileSize: 256,
