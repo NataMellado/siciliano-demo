@@ -66,65 +66,73 @@
   var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
   // Create scenes.
-  var scenes = data.scenes.map(function (data) {
-    var urlPrefix = "tiles";
-    var source = Marzipano.ImageUrlSource.fromString(
-      urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
-      { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" },
-    );
-    var geometry = new Marzipano.CubeGeometry(data.levels);
+  var scenes = data.scenes
+    .filter(function (data) {
+      return !data.disabled;
+    })
+    .map(function (data) {
+      var urlPrefix = "tiles";
+      var source = Marzipano.ImageUrlSource.fromString(
+        urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
+        { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" },
+      );
+      var geometry = new Marzipano.CubeGeometry(data.levels);
 
-    // Crear el view con límites de zoom
-    var limiter = Marzipano.RectilinearView.limit.traditional(
-      1040 * 10,
-      (120 * Math.PI) / 180,
-      (130 * Math.PI) / 180,
-    );
+      // Crear el view con límites de zoom
+      var limiter = Marzipano.RectilinearView.limit.traditional(
+        1040 * 10,
+        (120 * Math.PI) / 180,
+        (130 * Math.PI) / 180,
+      );
 
-    var view = new Marzipano.RectilinearView(
-      data.initialViewParameters,
-      limiter,
-    );
+      if (document.body.classList.contains("mobile")) {
+        data.initialViewParameters.fov = 1.8;
+      }
 
-    var scene = viewer.createScene({
-      source: source,
-      geometry: geometry,
-      view: view,
-      pinFirstLevel: true,
-    });
+      var view = new Marzipano.RectilinearView(
+        data.initialViewParameters,
+        limiter,
+      );
 
-    // Create link hotspots.
-    data.linkHotspots.forEach(function (hotspot) {
-      var element = createLinkHotspotElement(hotspot);
-      scene
-        .hotspotContainer()
-        .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-    });
+      var scene = viewer.createScene({
+        source: source,
+        geometry: geometry,
+        view: view,
+        pinFirstLevel: true,
+      });
 
-    // Create info hotspots.
-    data.infoHotspots.forEach(function (hotspot) {
-      var element = createInfoHotspotElement(hotspot);
-      scene
-        .hotspotContainer()
-        .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-    });
-
-    // Create pin hotspots.
-    if (data.pinHotspots) {
-      data.pinHotspots.forEach(function (hotspot) {
-        var element = createPinHotspotElement(hotspot);
+      // Create link hotspots.
+      data.linkHotspots.forEach(function (hotspot) {
+        var element = createLinkHotspotElement(hotspot);
         scene
           .hotspotContainer()
           .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
       });
-    }
 
-    return {
-      data: data,
-      scene: scene,
-      view: view,
-    };
-  });
+      // Create info hotspots.
+      data.infoHotspots.forEach(function (hotspot) {
+        var element = createInfoHotspotElement(hotspot);
+        scene
+          .hotspotContainer()
+          .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      });
+
+      // Create pin hotspots.
+      if (data.pinHotspots) {
+        data.pinHotspots.forEach(function (hotspot) {
+          var element = createPinHotspotElement(hotspot);
+          scene
+            .hotspotContainer()
+            .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+        });
+      }
+
+      return {
+        data: data,
+        scene: scene,
+        view: view,
+      };
+    });
 
   // DOM elements for view controls.
   var viewUpElement = document.querySelector("#viewUp");
@@ -223,7 +231,7 @@
 
       setTimeout(function () {
         updateSceneName(scene);
-      }, 350); 
+      }, 350);
     } else {
       updateSceneName(scene);
       infoBar.classList.add("visible");
@@ -243,41 +251,33 @@
   }
 
   function createLinkHotspotElement(hotspot) {
-    // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement("div");
     wrapper.classList.add("hotspot");
     wrapper.classList.add("link-hotspot");
 
-    // Create image element.
-    var icon = document.createElement("img");
-    icon.src = "img/link.png";
-    icon.classList.add("link-hotspot-icon");
+    var targetData = findSceneDataById(hotspot.target);
+    var sceneName = targetData ? targetData.name : "";
+    var isDisabled = targetData && targetData.disabled === true;
 
-    // Set rotation transform.
-    var transformProperties = [
-      "-ms-transform",
-      "-webkit-transform",
-      "transform",
-    ];
-    for (var i = 0; i < transformProperties.length; i++) {
-      var property = transformProperties[i];
-      icon.style[property] = "rotate(" + hotspot.rotation + "rad)";
+    var icon = document.createElement("div");
+    icon.classList.add("link-hotspot-icon");
+    icon.innerHTML = sceneName;
+
+    if (isDisabled) {
+      wrapper.classList.add("no-pano");
+      icon.style.cursor = "default";
+    } else {
+      wrapper.addEventListener("click", function () {
+        switchScene(findSceneById(hotspot.target));
+      });
     }
 
-    // Add click event handler.
-    wrapper.addEventListener("click", function () {
-      switchScene(findSceneById(hotspot.target));
-    });
-
-    // Prevent touch and scroll events from reaching the parent element.
-    // This prevents the view control logic from interfering with the hotspot.
     stopTouchAndScrollEventPropagation(wrapper);
 
-    // Create tooltip element.
     var tooltip = document.createElement("div");
     tooltip.classList.add("hotspot-tooltip");
     tooltip.classList.add("link-hotspot-tooltip");
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+    tooltip.innerHTML = sceneName;
 
     wrapper.appendChild(icon);
     wrapper.appendChild(tooltip);
@@ -423,7 +423,8 @@
   // Display the initial scene.
   switchScene(scenes[0]);
 
-  /*  var addedPins = [];
+  // Agrega click listener para agregar pins dinámicamente
+ /*  var addedPins = [];
   panoElement.addEventListener("click", function (event) {
     var rect = panoElement.getBoundingClientRect();
     var x = event.clientX - rect.left;

@@ -1,0 +1,94 @@
+/* Link hotspot */
+.link-hotspot {
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+/* Hotspots más pequeños en móvil */
+.mobile .link-hotspot {
+   width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+}
+
+
+/* Icono del hotspot */
+.link-hotspot-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 160, 5, 0.733);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover para dispositivos sin touch */
+.no-touch .link-hotspot:hover .link-hotspot-icon {
+  transform: scale(1.12);
+  background-color: rgba(76, 175, 80, 1);
+  box-shadow:
+    0 4px 16px rgba(76,175,80,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+
+/* hover gris para hotspots sin panorama */
+.link-hotspot.no-pano .link-hotspot-icon {
+  background-color: rgba(75, 75, 75, 0.733);
+}
+.no-touch .link-hotspot.no-pano:hover .link-hotspot-icon {
+  background-color: rgb(65, 65, 65);
+  box-shadow:
+    0 4px 16px rgba(88, 88, 88, 0.5),
+    inset 0 1px 0 rgba(87, 87, 87, 0.3);
+}
+
+/* Tooltip */
+.link-hotspot-tooltip {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  max-width: 200px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: rgba(15, 20, 30, 0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  display: none;
+}
+
+
+
+.no-touch .link-hotspot:hover .link-hotspot-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: all;
+}
+
+/* Fallback para dispositivos touch */
+.tooltip-fallback .link-hotspot-tooltip { display: none; }
+.no-touch .tooltip-fallback .link-hotspot:hover .link-hotspot-tooltip { display: block; }
