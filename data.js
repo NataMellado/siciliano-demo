@@ -21,13 +21,13 @@ var APP_DATA = {
           tileSize: 512,
           size: 2048,
         },
- /*        {
+        {
           tileSize: 512,
           size: 4096,
-        }, */
+        },
 
       ],
-      faceSize: 2500,
+      faceSize: 3000,
       initialViewParameters: {
         yaw: -2.6,
         pitch: 0.65,

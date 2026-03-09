@@ -1,0 +1,22 @@
+:root {
+  /* Colores */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-primary: #29EA66;
+  --color-primary-alt: #29ea66;
+  --color-secondary: #FACF04;
+  --color-secondary-alt: #FACF0499;
+
+  /* Tipografía */
+  --font-family: "Montserrat", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-pin-label: 0.8rem;
+
+  /* Dimensiones */
+  --bar-height: 40px;
+  --bar-height-mobile: 50px;
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+}

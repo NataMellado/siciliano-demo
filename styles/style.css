@@ -1,3 +1,5 @@
+/* Global styles */
+@import './root.css';
 
 /* Componentes */
 @import './pinHotspot.css';
