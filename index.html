@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Estancia Siciliano</title>
-<meta charset="utf-8">
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<style> @-ms-viewport { width: device-width; } </style>
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="styles/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Estancia Siciliano</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <style>
+    @-ms-viewport {
+      width: device-width;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/reset.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body class="multiple-scenes">
 
-<div id="pano"></div>
+<nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#">Estancia Siciliano</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i> Contacto</a></li>
+                    <li><a href="#"><i class="fas fa-globe"></i> Terra360</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
 
-<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
-  <img class="icon" src="img/up.png">
-</a>
-<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
-  <img class="icon" src="img/down.png">
-</a>
-<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
-  <img class="icon" src="img/left.png">
-</a>
-<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
-  <img class="icon" src="img/right.png">
-</a>
-<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
-  <img class="icon" src="img/plus.png">
-</a>
-<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
-  <img class="icon" src="img/minus.png">
-</a>
+  <div id="pano"></div>
 
-<a href="javascript:void(0)" id="backButton"">
-  <i class="fas fa-arrow-left"></i>
-</a>
+  <a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+    <img class="icon" src="img/up.png">
+  </a>
+  <a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+    <img class="icon" src="img/down.png">
+  </a>
+  <a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+    <img class="icon" src="img/left.png">
+  </a>
+  <a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+    <img class="icon" src="img/right.png">
+  </a>
+  <a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+    <img class="icon" src="img/plus.png">
+  </a>
+  <a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+    <img class="icon" src="img/minus.png">
+  </a>
 
-<div id="infoBar"">
+  <a href="javascript:void(0)" id="backButton"">
+  <i class=" fas fa-arrow-left"></i>
+  </a>
+
+  <div id="infoBar"">
   <div id="infoCard">
 
     <h2><span>Parcela </span><span id="titleBar"></span></h2>
@@ -44,7 +71,7 @@
     <hr>
 
     <div class="infoGrid">
-      
+
       <div class="infoItem">
         <div class="infoValue">$ Consultar</div>
         <div class="infoLabel">Valor desde</div>
@@ -70,20 +97,22 @@
     <button class="ctaButton">Reservar</button>
 
   </div>
-</div>
+  </div>
 
-<script src="vendor/screenfull.min.js" ></script>
-<script src="vendor/bowser.min.js" ></script>
-<script src="vendor/marzipano.js" ></script>
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/bowser.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
 
-<script src="data.js"></script>
+  <script src="data.js"></script>
 
-<script src="js/utils.js"></script>
-<script src="js/viewer.js"></script>
-<script src="js/hotspots.js"></script>
-<script src="js/scenes.js"></script>
-<script src="js/controls.js"></script>
-<script src="js/main.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/viewer.js"></script>
+  <script src="js/hotspots.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/controls.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
 
 </body>
+
 </html>

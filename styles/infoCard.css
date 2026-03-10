@@ -15,9 +15,9 @@ transition: transform 0.65s cubic-bezier(.22,.61,.36,1), opacity 0.25s;}
 }
 
 #infoCard {
-  background: white;
-  border-radius: 20px 20px 0 0;
-    padding: 20px;
+  background: white!important;
+  border-radius: 20px 20px 0 0!important;
+  padding: 20px!important;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -50,7 +50,7 @@ transition: transform 0.65s cubic-bezier(.22,.61,.36,1), opacity 0.25s;}
 }
 
 .status.available {
-  background-color: #049727;
+  background-color: var(--color-primary);
 }
 
 
@@ -90,8 +90,8 @@ transition: transform 0.65s cubic-bezier(.22,.61,.36,1), opacity 0.25s;}
   padding: 14px;
   border: none;
   border-radius: 12px;
-  background: #049727;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-black);
   font-size: 18px;
   font-family: "Montserrat", sans-serif; 
   font-weight: 600;
@@ -100,5 +100,5 @@ transition: transform 0.65s cubic-bezier(.22,.61,.36,1), opacity 0.25s;}
 }
 
 .ctaButton:hover {
-  background: #037a1e;
+  background: var(--color-primary-alt);
 }

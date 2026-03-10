@@ -69,8 +69,11 @@ function initSceneSwitcher(scenes, sceneNameElement, infoBar, backButton) {
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
 
+    var navbar = document.querySelector('.nav'); 
+
     if (sceneIndex === 0) {
       infoBar.classList.remove("visible");
+      navbar.classList.add("visible");
       setTimeout(function () {
         updateSceneName(scene);
       }, 350);
@@ -79,6 +82,7 @@ function initSceneSwitcher(scenes, sceneNameElement, infoBar, backButton) {
       updateSceneName(scene);
       infoBar.classList.add("visible");
       backButton.classList.add("visible");
+      navbar.classList.remove("visible");  
     }
   }
 
