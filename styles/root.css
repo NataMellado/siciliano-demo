@@ -7,5 +7,41 @@
   --color-secondary: #FACF04;
   --color-secondary-alt: #FACF0499;
 
+  /* UI Colors */
+  --color-ui-bg: rgb(103, 115, 131);
+  --color-ui-bg-alpha: rgba(103, 115, 131, 0.8);
+  --color-ui-panel: rgb(58, 68, 84);
+  --color-ui-panel-alpha: rgba(58, 68, 84, 0.8);
+  --color-ui-close: rgb(78, 88, 104);
+  --color-ui-close-alpha: rgba(78, 88, 104, 0.8);
+  --color-overlay: rgba(0, 0, 0, 0.5);
 
+  /* Tamaños base */
+  --size-btn: 40px;
+  --size-btn-mobile: 50px;
+  --size-icon: 30px;
+  --size-icon-mobile: 50px;
+  --border-radius-circle: 50%;
+  --border-radius-sm: 5px;
+
+  /* Transiciones */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+  --transition-ease: ease-in-out;
+
+  /* Fuentes */
+  --font-family: "Open Sans", sans-serif;
+  --font-size-base: 16px;
+
+  /* Scene List */
+  --scene-list-width: 220px;
+  --scene-item-height: 30px;
+  --scene-item-height-mobile: 40px;
+
+  /* Info Hotspot */
+  --hotspot-header-width-expanded: 260px;
+  --hotspot-title-width: 220px;
+  --hotspot-text-width: 300px;
+  --hotspot-text-max-height: 200px;
 }

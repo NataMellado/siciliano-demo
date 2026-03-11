@@ -1,0 +1,116 @@
+/* Scene List Toggle */
+#sceneListToggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size-btn);
+  height: var(--size-btn);
+  padding: 5px;
+  background-color: var(--color-ui-bg);
+  background-color: var(--color-ui-bg-alpha);
+}
+
+.mobile #sceneListToggle {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+}
+
+#sceneListToggle .text {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  width: 100%;
+  line-height: var(--size-icon);
+}
+
+#sceneListToggle .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.mobile #sceneListToggle .icon {
+  top: 10px;
+  right: 10px;
+}
+
+#sceneListToggle .icon.on  { display: none; }
+#sceneListToggle .icon.off { display: block; }
+#sceneListToggle.enabled .icon.on  { display: block; }
+#sceneListToggle.enabled .icon.off { display: none; }
+
+
+/* Scene List */
+#sceneList {
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--scene-list-width));
+  padding-top: var(--size-btn);
+  width: var(--scene-list-width);
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-left: 0;
+  -webkit-transition: margin-left var(--transition-slow) var(--transition-ease);
+  transition: margin-left var(--transition-slow) var(--transition-ease);
+}
+
+.mobile #sceneList {
+  padding-top: var(--size-btn-mobile);
+  width: 100%;
+  height: 100%;
+  left: -100%;
+}
+
+#sceneList .scenes {
+  width: 100%;
+  background-color: var(--color-ui-panel);
+  background-color: var(--color-ui-panel-alpha);
+}
+
+.mobile #sceneList .scenes {
+  height: 100%;
+}
+
+#sceneList.enabled          { margin-left: var(--scene-list-width); }
+.mobile #sceneList.enabled  { margin-left: 100%; }
+
+
+/* Scene Items */
+#sceneList .scene {
+  display: block;
+  width: 100%;
+  height: var(--scene-item-height);
+}
+
+.mobile #sceneList .scene {
+  height: var(--scene-item-height-mobile);
+}
+
+#sceneList .scene .text {
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  line-height: var(--scene-item-height);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile #sceneList .scene .text {
+  line-height: var(--scene-item-height-mobile);
+}
+
+.no-touch #sceneList .scene:hover,
+#sceneList .scene.current {
+  background-color: var(--color-ui-bg);
+  background-color: var(--color-ui-bg-alpha);
+}
+
+/* Ocultar cuando hay una sola escena */
+body.single-scene #sceneList,
+body.single-scene #sceneListToggle {
+  display: none;
+}

@@ -1,0 +1,316 @@
+/* Info Hotspot */
+.info-hotspot {
+  line-height: 1.2em;
+  opacity: 0.9;
+  -webkit-transition: opacity var(--transition-fast) var(--transition-fast);
+  transition: opacity var(--transition-fast) var(--transition-fast);
+}
+
+.no-touch .info-hotspot:hover,
+.info-hotspot.visible {
+  opacity: 1;
+  -webkit-transition: opacity var(--transition-fast);
+  transition: opacity var(--transition-fast);
+}
+
+/* Header */
+.info-hotspot .info-hotspot-header {
+  width: var(--size-btn);
+  height: var(--size-btn);
+  border-radius: 20px;
+  background-color: var(--color-ui-bg);
+  cursor: pointer;
+  -webkit-transition: width var(--transition-normal) var(--transition-ease) 0.5s,
+                      border-radius var(--transition-normal) var(--transition-ease) 0.5s;
+  transition: width var(--transition-normal) var(--transition-ease) 0.5s,
+              border-radius var(--transition-normal) var(--transition-ease) 0.5s;
+}
+
+.mobile .info-hotspot .info-hotspot-header {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+  border-radius: 25px;
+}
+
+.desktop.no-touch .info-hotspot .info-hotspot-header:hover {
+  width: var(--hotspot-header-width-expanded);
+  border-radius: var(--border-radius-sm);
+  -webkit-transition: width var(--transition-normal) var(--transition-ease),
+                      border-radius var(--transition-normal) var(--transition-ease);
+  transition: width var(--transition-normal) var(--transition-ease),
+              border-radius var(--transition-normal) var(--transition-ease);
+}
+
+.desktop .info-hotspot.visible .info-hotspot-header,
+.desktop.no-touch .info-hotspot.visible .info-hotspot-header:hover {
+  width: var(--hotspot-header-width-expanded);
+  border-radius: var(--border-radius-sm);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-transition: width var(--transition-normal) var(--transition-ease),
+                      border-radius var(--transition-normal) var(--transition-ease);
+  transition: width var(--transition-normal) var(--transition-ease),
+              border-radius var(--transition-normal) var(--transition-ease);
+}
+
+/* Icon */
+.info-hotspot .info-hotspot-icon-wrapper {
+  width: var(--size-btn);
+  height: var(--size-btn);
+}
+
+.mobile .info-hotspot .info-hotspot-icon-wrapper {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+}
+
+.info-hotspot .info-hotspot-icon {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+
+/* Title */
+.info-hotspot .info-hotspot-title-wrapper {
+  position: absolute;
+  left: var(--size-btn);
+  top: 0;
+  width: 0;
+  height: var(--size-btn);
+  padding: 0;
+  overflow: hidden;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-title-wrapper,
+.desktop.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
+  width: var(--hotspot-title-width);
+  padding: 0 5px;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
+}
+
+.info-hotspot .info-hotspot-title-wrapper::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.info-hotspot .info-hotspot-title {
+  display: inline-block;
+  vertical-align: middle;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Close button */
+.info-hotspot .info-hotspot-close-wrapper {
+  position: absolute;
+  left: var(--hotspot-header-width-expanded);
+  top: 0;
+  height: var(--size-btn);
+  width: var(--size-btn);
+  border-top-right-radius: var(--border-radius-sm);
+  background-color: var(--color-ui-close);
+  visibility: hidden;
+  -ms-transform: perspective(200px) rotateY(90deg);
+  -webkit-transform: perspective(200px) rotateY(90deg);
+  transform: perspective(200px) rotateY(90deg);
+  -ms-transform-origin: 0 50% 0;
+  -webkit-transform-origin: 0 50% 0;
+  transform-origin: 0 50% 0;
+  -webkit-transition: transform var(--transition-normal) var(--transition-normal),
+                      visibility 0s 0.6s;
+  transition: transform var(--transition-normal) var(--transition-normal),
+              visibility 0s 0.6s;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-close-wrapper {
+  visibility: visible;
+  -ms-transform: perspective(200px) rotateY(0deg);
+  -webkit-transform: perspective(200px) rotateY(0deg);
+  transform: perspective(200px) rotateY(0deg);
+  -webkit-transition: transform var(--transition-normal),
+                      visibility 0s 0s;
+  transition: transform var(--transition-normal),
+              visibility 0s 0s;
+}
+
+.info-hotspot .info-hotspot-close-icon {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+}
+
+/* Text panel */
+.info-hotspot .info-hotspot-text {
+  position: absolute;
+  width: var(--hotspot-text-width);
+  height: auto;
+  max-height: var(--hotspot-text-max-height);
+  top: var(--size-btn);
+  left: 0;
+  padding: 10px;
+  background-color: var(--color-ui-panel);
+  border-bottom-right-radius: var(--border-radius-sm);
+  border-bottom-left-radius: var(--border-radius-sm);
+  overflow-y: auto;
+  visibility: hidden;
+  -ms-transform: perspective(200px) rotateX(-89.999deg);
+  -webkit-transform: perspective(200px) rotateX(-89.999deg);
+  transform: perspective(200px) rotateX(-89.999deg);
+  -ms-transform-origin: 50% 0 0;
+  -webkit-transform-origin: 50% 0 0;
+  transform-origin: 50% 0 0;
+  -webkit-transition: transform var(--transition-normal),
+                      visibility 0s var(--transition-normal);
+  transition: transform var(--transition-normal),
+              visibility 0s var(--transition-normal);
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-text {
+  visibility: visible;
+  -ms-transform: perspective(200px) rotateX(0deg);
+  -webkit-transform: perspective(200px) rotateX(0deg);
+  transform: perspective(200px) rotateX(0deg);
+  -webkit-transition: transform var(--transition-normal) var(--transition-normal),
+                      visibility 0s 0s;
+  transition: transform var(--transition-normal) var(--transition-normal),
+              visibility 0s 0s;
+}
+
+
+/* Info Hotspot Modal */
+.desktop .info-hotspot-modal {
+  display: none;
+}
+
+.info-hotspot-modal {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 11000 !important;
+  background-color: var(--color-overlay);
+  line-height: 1.2em;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity var(--transition-fast) var(--transition-ease) 0.5s,
+                      visibility 0s 0.7s;
+  transition: opacity var(--transition-fast) var(--transition-ease) 0.5s,
+              visibility 0s 0.7s;
+}
+
+.info-hotspot-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity var(--transition-fast) var(--transition-ease),
+                      visibility 0s 0s;
+  transition: opacity var(--transition-fast) var(--transition-ease),
+              visibility 0s 0s;
+}
+
+.info-hotspot-modal .info-hotspot-header {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  width: auto;
+  height: var(--size-btn-mobile);
+  background-color: var(--color-ui-bg-alpha);
+  opacity: 0;
+  -webkit-transition: opacity var(--transition-normal) var(--transition-ease) 0.2s;
+  transition: opacity var(--transition-normal) var(--transition-ease) 0.2s;
+}
+
+.info-hotspot-modal.visible .info-hotspot-header {
+  opacity: 1;
+}
+
+.info-hotspot-modal .info-hotspot-icon-wrapper {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+}
+
+.info-hotspot-modal .info-hotspot-icon {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+
+.info-hotspot-modal .info-hotspot-title-wrapper {
+  position: absolute;
+  top: 0;
+  left: var(--size-btn-mobile);
+  right: var(--size-btn-mobile);
+  width: auto;
+  height: var(--size-btn-mobile);
+  padding: 0 10px;
+}
+
+.info-hotspot-modal .info-hotspot-title-wrapper::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.info-hotspot-modal .info-hotspot-title {
+  display: inline-block;
+  vertical-align: middle;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.info-hotspot-modal .info-hotspot-close-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+  background-color: var(--color-ui-close-alpha);
+  cursor: pointer;
+}
+
+.info-hotspot-modal .info-hotspot-close-icon {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+}
+
+.info-hotspot-modal .info-hotspot-text {
+  position: absolute;
+  top: 110px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: var(--color-ui-panel-alpha);
+  overflow-y: auto;
+  opacity: 0;
+  -webkit-transition: opacity var(--transition-normal) var(--transition-ease);
+  transition: opacity var(--transition-normal) var(--transition-ease);
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.info-hotspot-modal.visible .info-hotspot-text {
+  opacity: 1;
+  -webkit-transition: opacity var(--transition-normal) var(--transition-ease) 0.4s;
+  transition: opacity var(--transition-normal) var(--transition-ease) 0.4s;
+}

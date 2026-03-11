@@ -1,0 +1,120 @@
+/* ─── Fullscreen Toggle ──────────────────────────────── */
+#fullscreenToggle {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--size-btn);
+  height: var(--size-btn);
+  padding: 5px;
+  background-color: var(--color-ui-bg);
+  background-color: var(--color-ui-bg-alpha);
+}
+
+.mobile #fullscreenToggle {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+}
+
+body.fullscreen-enabled #fullscreenToggle {
+  display: block;
+}
+
+#fullscreenToggle .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.mobile #fullscreenToggle .icon {
+  top: 10px;
+  right: 10px;
+}
+
+#fullscreenToggle .icon.on  { display: none; }
+#fullscreenToggle .icon.off { display: block; }
+#fullscreenToggle.enabled .icon.on  { display: block; }
+#fullscreenToggle.enabled .icon.off { display: none; }
+
+
+/* ─── Autorotate Toggle ──────────────────────────────── */
+#autorotateToggle {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--size-btn);
+  height: var(--size-btn);
+  padding: 5px;
+  background-color: var(--color-ui-bg);
+  background-color: var(--color-ui-bg-alpha);
+}
+
+.mobile #autorotateToggle {
+  width: var(--size-btn-mobile);
+  height: var(--size-btn-mobile);
+}
+
+/* Desplazar a la izquierda si existe el botón de fullscreen */
+body.fullscreen-enabled #autorotateToggle        { right: var(--size-btn); }
+body.fullscreen-enabled.mobile #autorotateToggle { right: var(--size-btn-mobile); }
+
+#autorotateToggle .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.mobile #autorotateToggle .icon {
+  top: 10px;
+  right: 10px;
+}
+
+#autorotateToggle .icon.on  { display: none; }
+#autorotateToggle .icon.off { display: block; }
+#autorotateToggle.enabled .icon.on  { display: block; }
+#autorotateToggle.enabled .icon.off { display: none; }
+
+
+/* ─── View Control Buttons ───────────────────────────── */
+.viewControlButton {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: var(--size-btn);
+  height: var(--size-btn);
+  padding: 5px;
+  background-color: var(--color-ui-bg);
+  background-color: var(--color-ui-bg-alpha);
+}
+
+body.view-control-buttons .viewControlButton {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  body.view-control-buttons .viewControlButton {
+    display: none;
+  }
+}
+
+.viewControlButton .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+/* Center offset: margin-left base = -20px */
+.viewControlButton-1 { margin-left: -145px; }
+.viewControlButton-2 { margin-left: -95px; }
+.viewControlButton-3 { margin-left: -45px; }
+.viewControlButton-4 { margin-left: 5px; }
+.viewControlButton-5 { margin-left: 55px; }
+.viewControlButton-6 { margin-left: 105px; }
