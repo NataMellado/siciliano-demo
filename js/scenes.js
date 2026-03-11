@@ -85,6 +85,7 @@ function updateInfoCard(nombreLote) {
   var tipoEl = document.getElementById("loteTipo");
   var statusEl = document.querySelector("#infoCard .status");
   var statusText = document.querySelector("#infoCard p");
+  var statusText = document.getElementById("statusText");
 
   // Actualizar información del lote
   if (precioEl) precioEl.textContent = lote.precio || "-";
@@ -95,10 +96,10 @@ function updateInfoCard(nombreLote) {
   if (statusEl && statusText) {
     if (lote.disponible) {
       statusEl.className = "status available";
-      statusText.textContent = "Disponible";
+      statusText.textContent = " Disponible";
     } else {
       statusEl.className = "status sold";
-      statusText.textContent = "Vendido";
+      statusText.textContent = " Vendido";
     }
   }
 }
