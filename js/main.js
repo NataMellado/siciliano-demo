@@ -13,12 +13,11 @@
   var viewer = initViewer(panoElement, data);
 
   // 2. Inicializar switcher (necesita referencia adelantada)
-  //    Se crea switchScene antes de crear escenas para poder pasarla a los hotspots
   var scenes = [];
   var switchScene = initSceneSwitcher(scenes, sceneNameElement, infoBar, backButton);
+  
 
   // 3. Crear escenas pasando el array por referencia
-  //    Los linkHotspots usan scenesRef en el momento del click (ya populado)
   var createdScenes = createScenes(viewer, data, switchScene, scenes);
   createdScenes.forEach(function (s) { scenes.push(s); });
 
@@ -32,4 +31,5 @@
 
   // 6. Mostrar escena inicial
   switchScene(scenes[0]);
+  initLoader(viewer);
 })();

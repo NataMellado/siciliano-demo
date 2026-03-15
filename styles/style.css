@@ -10,6 +10,7 @@
 @import './infoCard.css';
 @import './linkHotspot.css';
 @import './navbar.css';
+@import './loader.css';
 
 /* módulos del visor 360 */
 @import './controls.css';

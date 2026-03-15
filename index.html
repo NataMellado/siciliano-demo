@@ -18,25 +18,54 @@
 
 <body class="multiple-scenes">
 
-<nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <a href="#">Estancia Siciliano</a>
-            </div>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a></li>
-                    <li><a href="#"><i class="fab fa-whatsapp"></i> Contacto</a></li>
-                    <li><a href="#"><i class="fas fa-globe"></i> Terra360</a></li>
-                </ul>
-            </div>
-            <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-        </div>
-    </nav>
+  <div id="loaderOverlay">
+    <div id="loaderLogoWrapper">
+
+      <svg id="loaderLogo" viewBox="0 0 347.53 184.54" xmlns="http://www.w3.org/2000/svg">
+        <defs><style>.cls-1{fill:#fff;}</style></defs>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 347.53 184.54">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #fff;
+              }
+            </style>
+          </defs>
+          <path class="cls-1" d="M0,76.45v-3.89h21.78v3.89h-8.86v35.86h-4.05v-35.86H0Z"/>
+          <path class="cls-1" d="M34.51,72.56h22.78v3.89h-18.81v12.46h18.65v3.89h-18.65v15.62h18.65v3.89h-22.62v-39.75Z"/>
+          <path class="cls-1" d="M71.34,72.56h7.92c4.41,0,7.4.18,8.97.54,2.36.54,4.28,1.7,5.76,3.48,1.48,1.78,2.22,3.96,2.22,6.56,0,2.16-.51,4.07-1.53,5.71-1.02,1.64-2.47,2.88-4.36,3.72-1.89.84-4.5,1.27-7.84,1.29l14.3,18.46h-4.92l-14.3-18.46h-2.25v18.46h-3.97v-39.75ZM75.32,76.45v13.51l6.85.05c2.65,0,4.62-.25,5.89-.76,1.27-.5,2.26-1.31,2.98-2.42.71-1.11,1.07-2.35,1.07-3.72s-.36-2.54-1.08-3.63c-.72-1.09-1.67-1.87-2.84-2.34-1.17-.47-3.12-.7-5.85-.7h-7.01Z"/>
+          <path class="cls-1" d="M109.67,72.56h7.92c4.41,0,7.4.18,8.97.54,2.36.54,4.28,1.7,5.76,3.48,1.48,1.78,2.22,3.96,2.22,6.56,0,2.16-.51,4.07-1.53,5.71-1.02,1.64-2.47,2.88-4.36,3.72-1.89.84-4.5,1.27-7.84,1.29l14.3,18.46h-4.92l-14.3-18.46h-2.25v18.46h-3.97v-39.75ZM113.65,76.45v13.51l6.85.05c2.65,0,4.62-.25,5.89-.76,1.27-.5,2.26-1.31,2.98-2.42.71-1.11,1.07-2.35,1.07-3.72s-.36-2.54-1.08-3.63c-.72-1.09-1.67-1.87-2.84-2.34-1.17-.47-3.12-.7-5.85-.7h-7.01Z"/>
+          <path class="cls-1" d="M160.25,72.56h-.97l-18.78,39.76h4.43l5.12-10.81,1.07-2.27,1.82-3.84,1.03-2.18,5.78-12.21,5.78,12.27,1,2.12h-.02l2.57,5.57,5.42,11.35h4.29l-18.54-39.76Z"/>
+          <path class="cls-1" d="M341.1,90.74l-3.99.57c.01.32.01.64.01.96,0,48.67-39.6,88.27-88.28,88.27-39.98,0-73.83-26.72-84.65-63.23h-4.16c10.93,38.75,46.61,67.23,88.81,67.23,50.88,0,92.28-41.39,92.28-92.27,0-.51,0-1.02-.02-1.53ZM248.84,0c-40.48,0-74.97,26.21-87.36,62.56h4.24c12.22-34.1,44.87-58.56,83.12-58.56,34.81,0,64.98,20.25,79.34,49.59l3.71-1.53C316.92,21.27,285.31,0,248.84,0Z"/>
+          <path class="cls-1" d="M347.53,71.2c0,2.77-.96,5.11-2.89,7.01-1.93,1.9-4.27,2.85-7.02,2.85s-5.08-.96-6.99-2.87c-1.91-1.91-2.87-4.27-2.87-7.08s.98-5,2.94-6.91,4.29-2.87,7.01-2.87,5.03.96,6.95,2.87,2.88,4.24,2.88,6.99ZM344.12,71.25c0-1.89-.62-3.48-1.86-4.77-1.24-1.28-2.75-1.92-4.53-1.92s-3.36.65-4.64,1.94c-1.28,1.29-1.92,2.86-1.92,4.7s.65,3.36,1.93,4.68c1.29,1.32,2.82,1.98,4.6,1.98s3.27-.65,4.53-1.94,1.89-2.85,1.89-4.67Z"/>
+        </svg>
+      </svg>
+
+      <span id="loaderPercent">0</span>
+
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="logo">
+        <a href="#">Estancia Siciliano</a>
+      </div>
+      <div id="mainListDiv" class="main_list">
+        <ul class="navlinks">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a></li>
+          <li><a href="#"><i class="fab fa-whatsapp"></i> Contacto</a></li>
+          <li><a href="#"><i class="fas fa-globe"></i> Terra360</a></li>
+        </ul>
+      </div>
+      <span class="navTrigger">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    </div>
+  </nav>
 
   <div id="pano"></div>
 
@@ -64,7 +93,7 @@
   </a>
 
   <div id="infoBar"">
-  <div id="infoCard">
+  <div id=" infoCard">
 
     <h2><span>Parcela </span><span id="titleBar"></span></h2>
     <p><span class="status available"></span><span id="statusText"> Disponible</span></p>
@@ -99,6 +128,8 @@
   </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
   <script src="vendor/screenfull.min.js"></script>
   <script src="vendor/bowser.min.js"></script>
   <script src="vendor/marzipano.js"></script>
@@ -111,6 +142,7 @@
   <script src="js/hotspots.js"></script>
   <script src="js/scenes.js"></script>
   <script src="js/controls.js"></script>
+  <script src="js/loader.js"></script>
   <script src="js/main.js"></script>
   <script src="js/navbar.js"></script>
 
