@@ -1,5 +1,5 @@
 function initLoader(viewer) {
-  var MIN_MS = 1000; // Tiempo mínimo que el loader debe estar visible (en ms)
+  var MIN_MS = 700; // Tiempo mínimo que el loader debe estar visible (en ms)
   var MAX_VAL = 360; // Valor máximo del porcentaje 
   var PHASE1 = 324; // Valor al que llegará el porcentaje en la fase 1 (90% de 360)
 
@@ -25,7 +25,7 @@ function initLoader(viewer) {
     { val: 0 },
     {
       val: PHASE1,
-      duration: MIN_MS / 700,
+      duration: MIN_MS / 500,
       ease: "power1.inOut",
       onUpdate: function () {
         if (!dismissed) setVal(this.targets()[0].val);
