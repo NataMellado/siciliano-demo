@@ -1,7 +1,7 @@
 function initLoader(viewer) {
-  var MIN_MS = 2000;
-  var MAX_VAL = 360;
-  var PHASE1 = 324;
+  var MIN_MS = 1000; // Tiempo mínimo que el loader debe estar visible (en ms)
+  var MAX_VAL = 360; // Valor máximo del porcentaje 
+  var PHASE1 = 324; // Valor al que llegará el porcentaje en la fase 1 (90% de 360)
 
   var overlay = document.querySelector("#loaderOverlay");
   var percentLabel = document.querySelector("#loaderPercent");
@@ -25,7 +25,7 @@ function initLoader(viewer) {
     { val: 0 },
     {
       val: PHASE1,
-      duration: MIN_MS / 1000,
+      duration: MIN_MS / 700,
       ease: "power1.inOut",
       onUpdate: function () {
         if (!dismissed) setVal(this.targets()[0].val);
@@ -50,55 +50,18 @@ function initLoader(viewer) {
           setVal(this.targets()[0].val);
         },
         onComplete: function () {
-          gsap.delayedCall(0.6, function () {
-            var tl = gsap.timeline({
-              onComplete: function () {
-                overlay.style.display = "none";
-              },
-            });
 
-            tl.to(
-              overlay,
-              {
-                opacity: 0,
-                duration: 0.7,
-                ease: "power2.in",
-              },
-              0.2,
-            );
-
-            tl.to(
-              [
-                "#lT",
-                "#lE",
-                "#lR1",
-                "#lR2",
-                "#lA",
-                "#loaderLogo",
-                "#loaderPercent",
-              ],
-              {
-                opacity: 0,
-                y: "30px",
-                duration: 0.45,
-                ease: "power3.in",
-                stagger: {
-                  each: 0.05,
-                  from: "start",
-                },
-              },
-              0.05,
-            );
-
-            tl.to(
-              overlay,
-              {
-                opacity: 0,
-                duration: 0.7,
-                ease: "power2.in",
-              },
-              0.2,
-            );
+          // Fase 3: animacion de salida
+          gsap.to(overlay, {
+            delay: 0.3, 
+            duration: 1,
+            ease: "power1.inOut",
+            filter: "blur(20px)",
+            scale: 1.5,
+            opacity: 0,
+            onComplete: function () {
+              overlay.style.display = "none";
+            },
           });
         },
       },

@@ -23,8 +23,8 @@
 
 #loaderPercent {
   position: absolute;
-  left: 231px;
-  top: 50%;
+  left: 233px;
+  top: calc(50% + 3.5px);
   transform: translate(-50%, -50%);
   color: #fff;
   font-family: var(--font-family-alt);
@@ -40,7 +40,7 @@
     width: 240px;
   }
   #loaderPercent {
-    left: 175px;
+    left: 177px;
     font-size: 2.5rem;
   }
 }
